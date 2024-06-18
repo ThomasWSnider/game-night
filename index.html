@@ -30,15 +30,16 @@
         <div class="col-6 text-light">
           <div id="playerCards" class="row">
           </div>
-          <div class="col-12">
-            <form id="playerForm" class=" text-center">
+          <div class="col-12 d-flex flex-column align-items-center">
+            <form onsubmit="app.PlayersController.createNewPlayer()" id="playerForm" class="player-form">
               <label for="playerName">Enter Player Name</label>
               <input class="mx-2" id="playerName" name="playerName" type="text" minlength="2" maxlength="20"
                 placeholder="Name">
               <button class="btn btn-outline-light px-4" type="submit">Submit</button>
             </form>
             <div class="d-grid mt-3">
-              <button class="btn btn-light">Add Player</button>
+              <button id="formToggle" class="btn btn-light" onclick="app.PlayersController.toggleForm()">Add
+                Player</button>
             </div>
           </div>
         </div>

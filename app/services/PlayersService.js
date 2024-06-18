@@ -29,7 +29,7 @@ class PlayersService {
     const player = new Player(playerName)
     console.log('new player', playerName);
     const players = AppState.players
-
+    players.push(player)
   }
 }
 

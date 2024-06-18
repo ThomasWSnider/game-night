@@ -6,6 +6,7 @@ export class PlayersController {
   constructor() {
     console.log('Hello World');
     this.drawPlayers()
+    this.toggleForm()
   }
 
   minusScore(playerName) {
@@ -28,21 +29,30 @@ export class PlayersController {
     let innerHTMLString = ``
     const players = AppState.players
 
-    players.forEach((player) => innerHTMLString += /*html*/`<div class="col-12">
-              <div class="d-flex align-items-center justify-content-center py-3">
-                <h4 class="me-auto text-capitalize"><i class="mdi mdi-account-circle fs-3"></i> ${player.name}</h4>
-                <button class="btn btn-dark fs-5" onclick="app.PlayersController.minusScore('${player.name}')"><i
-                    class="mdi mdi-minus-circle-outline p-0"></i></button>
-                <h4 class="fs-3">${player.score}</h4>
-                <button class="btn btn-dark fs-5" onclick="app.PlayersController.plusScore('${player.name}')"><i
-                    class="mdi mdi-plus-circle-outline p-0"></i></button>
-              </div>
-            </div>`)
+    players.forEach((player) => innerHTMLString += player.playerCardHTMLTemplate)
     playerCardsElement.innerHTML = innerHTMLString
   }
 
-  createNewPLayer() {
+  createNewPlayer() {
     event.preventDefault()
+    const form = event.target
+    // @ts-ignore
+    const nameFromForm = form.playerName.value
+    playersService.createNewPlayer(nameFromForm)
 
+    this.drawPlayers()
+    this.toggleForm()
+  }
+
+  toggleForm() {
+    const formElement = document.getElementById('playerForm')
+    const btnElement = document.getElementById('formToggle')
+    if (formElement.style.display === "none") {
+      formElement.style.display = "inline-flex";
+      btnElement.style.display = "none"
+    } else {
+      formElement.style.display = "none"
+      btnElement.style.display = "block"
+    }
   }
 }
