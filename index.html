@@ -28,19 +28,17 @@
     <section class="container">
       <div class="row justify-content-center mt-5">
         <div class="col-6 text-light">
-          <div class="row">
-            <div class="col-12">
-              <div class="d-flex align-items-center justify-content-center">
-                <h4 class="me-auto"><i class="mdi mdi-account-circle fs-3"></i> Player Name</h4>
-                <button class="btn btn-dark fs-5 "><i class="mdi mdi-minus-circle-outline p-0"></i></button>
-                <h4 class="fs-3">0</h4>
-                <button class="btn btn-dark fs-5 "><i class="mdi mdi-plus-circle-outline p-0"></i></button>
-              </div>
-            </div>
-            <div class="col-12">
-              <div class="d-grid mt-3">
-                <button class="btn btn-light">Add Player</button>
-              </div>
+          <div id="playerCards" class="row">
+          </div>
+          <div class="col-12">
+            <form id="playerForm" class=" text-center">
+              <label for="playerName">Enter Player Name</label>
+              <input class="mx-2" id="playerName" name="playerName" type="text" minlength="2" maxlength="20"
+                placeholder="Name">
+              <button class="btn btn-outline-light px-4" type="submit">Submit</button>
+            </form>
+            <div class="d-grid mt-3">
+              <button class="btn btn-light">Add Player</button>
             </div>
           </div>
         </div>
